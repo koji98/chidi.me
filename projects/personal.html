@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <div class="row project" data-aos="fade-up">
+    <div class="row project" data-aos="zoom-in">
       <div class="col2">
         <a href="https://for2.app/" target="_blank">
           <img src="../images/for2_image.png" class="projectImage">
@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    <div class="row project" data-aos="fade-up">
+    <div class="row project" data-aos="zoom-in">
       <div class="col2">
         <a href="#" target="_blank">
           <img src="../images/twitter_instagram.jpg" class="projectImage">
@@ -89,7 +89,7 @@
           </span>
         </div>
         <article>
-          Created a bot to upload videos posted from a Instagram to a Twitter with the caption.
+          Created a bot to upload videos posted on my Instagram to my Twitter with the caption.
           I had to utilize both Instagram's and Twitter's api. I created the bot with Node.js
           and used MySQL to store each video id to ensure the same video would never be posted
           twice.
@@ -107,7 +107,7 @@
       </div>
     </div>
 
-    <div class="row project" data-aos="fade-up">
+    <div class="row project" data-aos="zoom-in">
       <div class="col2">
         <a href="https://github.com/koji98/Hyperion" target="_blank">
           <img src="../images/hyperion.png" class="projectImage">
@@ -121,7 +121,7 @@
           </span>
         </div>
         <article>
-          Constructed a decentralized platform taht allows users to share off grid electricity
+          Constructed a decentralized platform that allows users to share off grid electricity
           with each other in Nigeria within a 36 hour hackathon. Me and my partner used Solidity
           to create the block chain and ERC20 tokens, MySQL for the database, Node.js for
           the back-end, and Bootstrap for the front-end.
@@ -143,7 +143,7 @@
       </div>
     </div>
 
-    <div class="row project" data-aos="fade-up">
+    <div class="row project" data-aos="zoom-in">
       <div class="col2">
         <a href="https://github.com/koji98/Weather_App" target="_blank">
           <img src="../images/weather_info.png" class="projectImage">
@@ -159,8 +159,8 @@
         </div>
         <article>
           Developed a constantly updating weather app using Node.js, Express, and
-          the Open Weather Map api. You could search up locations by their zipcode.
-          The background image changes to help convey the weather in that area.
+          the Open Weather Map api. The background image changes to help convey the
+          weather in that area.
         </article>
 
         <div class="technology-container">
@@ -177,7 +177,7 @@
       </div>
     </div>
 
-    <div class="row project" id="footer" data-aos="fade-up">
+    <div class="row project" id="footer" data-aos="zoom-in">
       <div class="col2">
         <a href="https://devpost.com/software/magic-mirror-mzoh6x" target="_blank">
           <img src="../images/magic_mirror.png" class="projectImage">
@@ -195,8 +195,12 @@
           we say, "Alexa, ask Magic Mirror what I should wear today".
         </article>
         <article>
-          This is the project that changed everything for me. It took me from wondering why I program to looking forward to the next I could build. I didn't do too much on this group project, but after my eyes were openned to the different topics in programming,
-          I started making things on my own. This lead me to want a more "formal" education than just building things and looking up how to do so online, so I bought Udemy courses. A lot of Udemy courses. Courses for web development, app develpoment,
+          This is the project that changed everything for me. It took me from wondering why I
+          program to looking forward to the next thing I could build. I didn't do too much on this
+          group project, but afterwards, my eyes were opened to the different topics in computer science,
+          I started creating projects on my own. This lead me to want a more "formal" education
+          than just building things and looking up how to do so online, so I bought Udemy courses.
+          A lot of Udemy courses. Courses for web development, app develpoment,
           Node.js, MySql, and so much more.
         </article>
 
@@ -217,7 +221,9 @@
   <script>
     AOS.init({
       once: true,
-      duration: 1000,
+      duration: 1500,
+      ease: "ease-in-sine",
+      offset: 75
     });
   </script>
 
@@ -229,13 +235,13 @@
     $('a[href^="#"]').click(function() {
       $root.animate({
         scrollTop: $($.attr(this, "href")).offset().top
-      }, 4000)
+      }, 1500)
       return false;
     })
   </script>
   <script>
     window.onscroll = function(ev) {
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 400) {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         document.querySelector(".bottomArrow").style.display = "none";
       } else {
         document.querySelector(".bottomArrow").style.display = "initial"

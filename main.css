@@ -63,9 +63,9 @@ a {
 
 .projectType {
   display: flex;
-  flex: 2;
-  align-items: flex-end;
-  justify-content: flex-end;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   margin-bottom: 50px;
   padding: 0;
@@ -144,7 +144,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 240px;
+  height: 120px;
   width: 160px;
   position: fixed;
   z-index: 1;
@@ -161,9 +161,13 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
-  flex-grow: 1;
-  width: 120px;
+  align-items: center;
+  width: 160px;
+  height: 120px;
+  margin-top: 1em;
+  border-left: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
+  border-bottom-left-radius: 7px;
 }
 
 .bottomArrowContainer {

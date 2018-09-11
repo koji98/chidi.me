@@ -38,21 +38,25 @@
       </div>
     </div>
 
-    <div class="row project" data-aos="fade-up">
+    <div class="row project" data-aos="zoom-in">
       <div class="col2">
+        <a href="https://www.udemy.com/the-complete-react-native-and-redux-course/" target="_blank">
           <img src="../images/manager.png" class="projectImage">
+        </a>
       </div>
       <div class="col2">
         <div class="row">
-          <span>Manager</span>
-          <sub class="projectDate">June 2018</sub>
+          <span>
+            <span>Manager</span>
+            <sub class="projectDate">June 2018</sub>
           </span>
         </div>
         <article>
-          The idea behind this app is a manager behind a small business can add employees,
-          designate their schedules for them, and text that schedule to the employee. Added in
-          user authentifcation with firebase. After the user logs in, they are presented with a
-          list of their employees. They can hire(add) and fire(delete) employees once logged in.
+          This app let's a manager of a small business add employees,
+          designate their schedules, and text that schedule to the employee. I added in
+          user authentifcation with firebase. After the user logs in,
+          they are presented with a list of their employees. They can then hire or
+          fire employees once logged in.
         </article>
 
         <div class="technology-container">
@@ -66,19 +70,22 @@
       </div>
     </div>
 
-    <div class="row project" data-aos="fade-up">
+    <div class="row project" data-aos="zoom-in">
       <div class="col2">
+        <a href="https://www.udemy.com/the-complete-react-native-and-redux-course/" target="_blank">
           <img src="../images/tech_stack.png" class="projectImage">
+        </a>
       </div>
       <div class="col2">
         <div class="row">
-          <span>Tech Stack</span>
-          <sub class="projectDate">June 2018</sub>
+          <span>
+            <span>Tech Stack</span>
+            <sub class="projectDate">June 2018</sub>
           </span>
         </div>
         <article>
           Created an app where users are presented with a list of topics,
-          and whenever a topic is tapped on, the section expands showing a
+          and whenever a topic is pressed, the section expands showing a
           description of that topic.
         </article>
 
@@ -92,20 +99,23 @@
       </div>
     </div>
 
-    <div class="row project" data-aos="fade-up">
+    <div class="row project" data-aos="zoom-in">
       <div class="col2">
+        <a href="https://www.udemy.com/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/" target="_blank">
           <img src="../images/instagram.png" class="projectImage">
+        </a>
       </div>
       <div class="col2">
         <div class="row">
           <span>
             <span class="projectTitle">Instagram Database Clone</span>
-          <sub class="projectDate">March 2018</sub>
+            <sub class="projectDate">March 2018</sub>
           </span>
         </div>
         <article>
           Cloned the Instagram database. I made tables for photos, comments, users,
-          likes, followers, followings, and hashtags.
+          likes, followers, followings, and hashtags. I made the relationships between these
+          tables and used a lot of joins.
         </article>
 
         <div class="technology-container">
@@ -117,19 +127,23 @@
       </div>
     </div>
 
-    <div class="row project" data-aos="fade-up">
+    <div class="row project" data-aos="zoom-in">
       <div class="col2">
+        <a href="https://www.udemy.com/the-web-developer-bootcamp/" target="_blank">
           <img src="../images/movie_app_api.png" class="projectImage">
+        </a>
       </div>
       <div class="col2">
         <div class="row">
           <span>
             <span class="projectTitle">Movie App</span>
-          <sub class="projectDate">December 2017</sub>
+            <sub class="projectDate">December 2017</sub>
           </span>
         </div>
         <article>
-          Used the OMDb API to create a movie finder webapp.
+          Used the OMDb API to create a movie finder webapp. I made api endpoint calls
+          using the request npm module and parsed through the JSON with Node.js to extract the
+          relevant data and display to the user.
         </article>
 
         <div class="technology-container">
@@ -145,20 +159,22 @@
       </div>
     </div>
 
-    <div class="row project" data-aos="fade-up">
+    <div class="row project" data-aos="zoom-in">
       <div class="col2">
+        <a href="https://www.udemy.com/the-web-developer-bootcamp/" target="_blank">
           <img src="../images/patatap.png" class="projectImage">
+        </a>
       </div>
       <div class="col2">
         <div class="row">
           <span>
             <span class="projectTitle">Patatap Clone</span>
-          <sub class="projectDate">November 2017</sub>
+            <sub class="projectDate">November 2017</sub>
           </span>
         </div>
         <article>
           Created a Patatap clone, which is a portable animation and sound kit. With the
-          press of a key, it creates melodies charged with moving shapes. I made this with
+          press of a key, it creates melodies charged with moving shapes. This was made with
           Paper.js and Neuronal Symphonies.
         </article>
 
@@ -173,15 +189,17 @@
       </div>
     </div>
 
-    <div class="row project" id="footer" data-aos="fade-up">
+    <div class="row project" id="footer" data-aos="zoom-in">
       <div class="col2">
+        <a href="https://www.udemy.com/the-web-developer-bootcamp/" target="_blank">
           <img src="../images/color_game.png" class="projectImage">
+        </a>
       </div>
       <div class="col2">
         <div class="row">
           <span>
             <span class="projectTitle">The Great RGB Color Game</span>
-          <sub class="projectDate">November 2017</sub>
+            <sub class="projectDate">November 2017</sub>
           </span>
         </div>
         <article>
@@ -207,7 +225,9 @@
   <script>
     AOS.init({
       once: true,
-      duration: 1000,
+      duration: 1500,
+      ease: "ease-in-sine",
+      offset: 75
     });
   </script>
 
@@ -219,7 +239,7 @@
     $('a[href^="#"]').click(function() {
       $root.animate({
         scrollTop: $($.attr(this, "href")).offset().top
-      }, 4000)
+      }, 1500)
       return false;
     })
   </script>
