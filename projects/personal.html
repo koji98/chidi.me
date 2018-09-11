@@ -10,9 +10,22 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-control" content="public">
 </head>
 
 <body>
+
+  <!-- Mobile Top Content -->
+  <div class="topnav" id="myTopnav">
+    <a href="../index.html">Chidi</a>
+    <a href="../index.html">Home</a>
+    <a href="./resume.html">Resume</a>
+    <a href="https://www.linkedin.com/in/chidiu98/" target="_blank">LinkedIn</a>
+    <a class="active">Projects</a>
+    <a href="javascript:void(0);" class="icon" onclick="respond()">
+      <i class="fa fa-bars"></i>
+   </a>
+  </div>
 
   <!-- Side Content -->
   <div class="sideNav">
@@ -32,7 +45,7 @@
     <div class="row projHeader">
       <h1 class="projectType">Personal Projects</h1>
       <div class="sideNavProjS">
-        <a  href="./school.html">School</a>
+        <a href="./school.html">School</a>
         <a href="./udemy.html">Udemy</a>
         <span>Personal</span>
       </div>
@@ -52,12 +65,8 @@
           </span>
         </div>
         <article>
-          Currently I am developing a mobile dating app where user interactions are incetevised
-          through discount codes to local restaurants. I am making the app using React Native,
-          Redux, & Expo on the front-end, Node.js on the back-end, MySQL for the database,
-          and plan on using Nginx for the web server. To find out more about the specifics of
-          the app or to sign up to be informed for it's release, head to the website by clicking
-          on the picture :)
+          Currently I am developing a mobile dating app where user interactions are incetevised through discount codes to local restaurants. I am making the app using React Native, Redux, & Expo on the front-end, Node.js on the back-end, MySQL for the database,
+          and plan on using Nginx for the web server. To find out more about the specifics of the app or to sign up to be informed for it's release, head to the website by clicking on the picture :)
         </article>
 
         <div class="technology-container">
@@ -89,9 +98,7 @@
           </span>
         </div>
         <article>
-          Created a bot to upload videos posted on my Instagram to my Twitter with the caption.
-          I had to utilize both Instagram's and Twitter's api. I created the bot with Node.js
-          and used MySQL to store each video id to ensure the same video would never be posted
+          Created a bot to upload videos posted on my Instagram to my Twitter with the caption. I had to utilize both Instagram's and Twitter's api. I created the bot with Node.js and used MySQL to store each video id to ensure the same video would never be posted
           twice.
         </article>
 
@@ -121,9 +128,7 @@
           </span>
         </div>
         <article>
-          Constructed a decentralized platform that allows users to share off grid electricity
-          with each other in Nigeria within a 36 hour hackathon. Me and my partner used Solidity
-          to create the block chain and ERC20 tokens, MySQL for the database, Node.js for
+          Constructed a decentralized platform that allows users to share off grid electricity with each other in Nigeria within a 36 hour hackathon. Me and my partner used Solidity to create the block chain and ERC20 tokens, MySQL for the database, Node.js for
           the back-end, and Bootstrap for the front-end.
         </article>
 
@@ -131,7 +136,7 @@
           <div class="technology">
             <span>Html<span class="dot-seperator">&middot;</span></span>
             <span>CSS<span class="dot-seperator">&middot;</span></span>
-            <span >JS<span class="dot-seperator">&middot;</span></span>
+            <span>JS<span class="dot-seperator">&middot;</span></span>
             <span>Node.js<span class="dot-seperator">&middot;</span></span>
             <span>Express<span class="dot-seperator">&middot;</span></span>
             <span>MySQL<span class="dot-seperator">&middot;</span></span>
@@ -158,16 +163,14 @@
           </span>
         </div>
         <article>
-          Developed a constantly updating weather app using Node.js, Express, and
-          the Open Weather Map api. The background image changes to help convey the
-          weather in that area.
+          Developed a constantly updating weather app using Node.js, Express, and the Open Weather Map api. The background image changes to help convey the weather in that area.
         </article>
 
         <div class="technology-container">
           <div class="technology">
             <span>Html<span class="dot-seperator">&middot;</span></span>
             <span>CSS<span class="dot-seperator">&middot;</span></span>
-            <span >JS<span class="dot-seperator">&middot;</span></span>
+            <span>JS<span class="dot-seperator">&middot;</span></span>
             <span>Node.js<span class="dot-seperator">&middot;</span></span>
             <span>Express<span class="invisible">&middot;</span></span>
 
@@ -195,13 +198,9 @@
           we say, "Alexa, ask Magic Mirror what I should wear today".
         </article>
         <article>
-          This is the project that changed everything for me. It took me from wondering why I
-          program to looking forward to the next thing I could build. I didn't do too much on this
-          group project, but afterwards, my eyes were opened to the different topics in computer science,
-          I started creating projects on my own. This lead me to want a more "formal" education
-          than just building things and looking up how to do so online, so I bought Udemy courses.
-          A lot of Udemy courses. Courses for web development, app develpoment,
-          Node.js, MySql, and so much more.
+          This is the project that changed everything for me. It took me from wondering why I program to looking forward to the next thing I could build. I didn't do too much on this group project, but afterwards, my eyes were opened to the different topics in
+          computer science, I started creating projects on my own. This lead me to want a more "formal" education than just building things and looking up how to do so online, so I bought Udemy courses. A lot of Udemy courses. Courses for web development,
+          app develpoment, Node.js, MySql, and so much more.
         </article>
 
         <div class="technology-container">
@@ -216,38 +215,50 @@
       </div>
     </div>
 
-  <!-- Scrolling Animation for Projects -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      once: true,
-      duration: 1500,
-      ease: "ease-in-sine",
-      offset: 75
-    });
-  </script>
-
-  <!-- Scrolling Animations for Down Arrow -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script>
-    var $root = $('html, body');
-
-    $('a[href^="#"]').click(function() {
-      $root.animate({
-        scrollTop: $($.attr(this, "href")).offset().top
-      }, 1500)
-      return false;
-    })
-  </script>
-  <script>
-    window.onscroll = function(ev) {
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        document.querySelector(".bottomArrow").style.display = "none";
-      } else {
-        document.querySelector(".bottomArrow").style.display = "initial"
+    <!-- Mobile Navbar Script -->
+    <script>
+      function respond() {
+        var elem = document.querySelector("#myTopnav");
+        if (elem.className === "topnav") {
+          elem.className += " responsive";
+        } else {
+          elem.className = "topnav";
+        }
       }
-    }
-  </script>
+    </script>
+
+    <!-- Scrolling Animation for Projects -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        once: true,
+        duration: 1500,
+        ease: "ease-in-sine",
+        offset: 75
+      });
+    </script>
+
+    <!-- Scrolling Animations for Down Arrow -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      var $root = $('html, body');
+
+      $('a[href^="#"]').click(function() {
+        $root.animate({
+          scrollTop: $($.attr(this, "href")).offset().top
+        }, 1500)
+        return false;
+      })
+    </script>
+    <script>
+      window.onscroll = function(ev) {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+          document.querySelector(".bottomArrow").style.display = "none";
+        } else {
+          document.querySelector(".bottomArrow").style.display = "initial"
+        }
+      }
+    </script>
 
 </body>
 

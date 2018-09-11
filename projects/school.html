@@ -10,9 +10,22 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-control" content="public">
 </head>
 
 <body>
+
+  <!-- Mobile Top Content -->
+  <div class="topnav" id="myTopnav">
+    <a href="../index.html">Chidi</a>
+    <a href="../index.html">Home</a>
+    <a href="./resume.html">Resume</a>
+    <a href="https://www.linkedin.com/in/chidiu98/" target="_blank">LinkedIn</a>
+    <a class="active">Projects</a>
+    <a href="javascript:void(0);" class="icon" onclick="respond()">
+      <i class="fa fa-bars"></i>
+   </a>
+  </div>
 
   <!-- Side Content -->
   <div class="sideNav">
@@ -335,6 +348,18 @@
 
       </div>
     </div>
+
+    <!-- Mobile Navbar Script -->
+    <script>
+       function respond(){
+         var elem = document.querySelector("#myTopnav");
+         if(elem.className === "topnav"){
+           elem.className += " responsive";
+         } else {
+           elem.className = "topnav";
+         }
+       }
+    </script>
 
   <!-- Scrolling Animation for Projects -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
