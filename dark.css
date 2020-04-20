@@ -17,50 +17,27 @@ body {
     background-size: cover;
 }
 
-.title {
+.title,
+.title:hover,
+.intro,
+.post,
+.post:hover,
+.post-content {
     color: #FFFFF0;
-}
-
-.intro {
-    color: #FFFFF0;
-}
-
-.post {
-    color: #FFFFF0;
+    opacity: .75;
 }
 
 .post-title {
-    color: #009A00;
+    color: #F0C420;
+    /* text-shadow: 0px 0px 1px #FFFFF0; */
 }
 
-.modal-content {
-    background-color: #1F1F1F;
+.intro-opener {
+    border-color: #F0C420;
 }
 
-.modal-title {
-    color: #009A00;
-}
 
-.modal-body {
-    color: #FFFFF0;
-}
-
-button.close {
-    color: #FFFFF0;
-}
-
-button.close:hover {
-    color: #FFFFF0;
-}
-
-.modal-footer button.btn {
-    color: #FFFFF0;
-}
-
-.modal-footer button.btn:hover {
-    color: #FFFFF0;
-}
-
+/* START SOURCE: https://jsfiddle.net/dfmbe60u/13/ */
 .custom-switch.custom-switch-adaptive .custom-control-label {
     color: #1F1F1F;
     border: 1px solid #FFFFF0;
@@ -70,5 +47,7 @@ button.close:hover {
 .custom-switch.custom-switch-adaptive .custom-control-input:checked ~ .custom-control-label {
     color: #1F1F1F;
     border: 1px solid #1F1F1F;
-    background-color: #009A00;
+    background-color: #F0C420;
+    opacity: .75;
 }
+/* END SOURCE */
