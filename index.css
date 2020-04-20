@@ -149,6 +149,10 @@ i {
     .modal-body p {
         margin-bottom: 8%;
     }
+
+    .w-75 {
+        width: 100% !important;
+    }
 }
 
 /* START SOURCE: https://jsfiddle.net/dfmbe60u/13/ */
