@@ -1,13 +1,15 @@
 const toggle = $("#customSwitch1");
 
-if (localStorage.getItem("theme").includes("dark.css")) {
-    toggle.prop("checked", true);
-    setStyleSheet("dark")
-    $("#customSwitch1Label").html("&larr;");
-} else {
-    toggle.prop("checked", false);
-    setStyleSheet("light")
-    $("#customSwitch1Label").html("&rarr;");
+if (localStorage.getItem("theme") !== null ){
+    if (localStorage.getItem("theme").includes("dark.css")) {
+        toggle.prop("checked", true);
+        setStyleSheet("dark")
+        $("#customSwitch1Label").html("&larr;");
+    } else {
+        toggle.prop("checked", false);
+        setStyleSheet("light")
+        $("#customSwitch1Label").html("&rarr;");
+    }
 }
 
 toggle.on("click", () => {
