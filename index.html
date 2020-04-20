@@ -1,63 +1,134 @@
- <!DOCTYPE html>
- <html lang="en" dir="ltr">
-   <head>
-     <meta charset="utf-8">
-     <title>Chidi</title>
-     <link rel="shortcut icon" type="image/x-icon" href="./spaceman_favicon.ico">
-     <link rel="stylesheet" href="main.css">
-     <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <meta http-equiv="Cache-control" content="public">
-   </head>
-   <body>
+<!DOCTYPE html>
+<html>
 
-     <!-- Mobile Top Content -->
-     <div class="topnav" id="myTopnav">
-       <a>Chidi</a> 
-       <a class="active">Home</a>
-       <a href="./resume.html">Resume</a>
-       <a href="https://www.linkedin.com/in/chidiu98/" target="_blank">LinkedIn</a>
-       <a href="./projects/school.html">Projects</a>
-       <a href="javascript:void(0);" class="icon" onclick="respond()">
-         <i class="fa fa-bars"></i>
-      </a>
-     </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-     <!-- Side Content -->
-     <div class="sideNav">
-       <span>Home</span>
-       <a href="./resume.html">Resume</a>
-       <a href="https://www.linkedin.com/in/chidiu98/" target="_blank">LinkedIn</a>
-       <a href="./projects/school.html">Projects</a>
-     </div>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=B612&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./light.css" id="cssTheme">
 
-     <div class="row projectContent index">
-       <div class="col index">
-         <img src="./images/magic_mirror.png" id="signPosts"/>
-       </div>
-       <div class="col">
-         <h1 id="name">Chidi Udeze</h1>
-         <p class="bio">Hey! My name is Chidi and I am a student at the University of Maryland - College Park
-        majoring in Computer Science and minoring in Technology Entrepreneurship. My main technological interests
-        include web development and app development.</p>
-        <p class="bio">The picture to the left is the project that opened up my deep passion for programming at
-        my first ever hackathon! Excuse my face in the picture, I don't know why I look so angry 	&#128579; </p>
-       </div>
-     </div>
+    <title>A Blog by Chidi Udeze</title>
+    <style>
 
-     <!-- Mobile Navbar Script -->
-     <script>
-        function respond(){
-          var elem = document.querySelector("#myTopnav");
-          if(elem.className === "topnav"){
-            elem.className += " responsive";
-          } else {
-            elem.className = "topnav";
-          }
-        }
-     </script>
+    </style>
+</head>
 
+<body>
 
-   </body>
- </html>
+    <div class="container">
+        <div class="row begin">
+            <div class="col-12">
+
+                <div class="row justify-content-center">
+                    <!-- BLOG CONTENT -->
+                    <div class="col-9 center">
+                        <h2 class="title">Chidi's Blog</h2>
+                        <div class="intro">
+                            <p>Personal Blog by Chidi Udeze</p>
+                            <b><i>Walk With Me</i></b>
+                        </div>
+
+                        <!-- ---------------------------------------------------- -->
+                        <!--                      BLOG POSTS                      -->
+                        <!-- ---------------------------------------------------- -->
+
+                        <!-- BLOG POST 1 -->
+                        <div class="post" data-toggle="modal" data-target="#blogPost1">
+                            <h3 class="post-title">Walk With Me</h3>
+                            <p class="post-info">April 19, 2020</p>
+                            <p class="post-snippet">The Reason Why I Blog</p>
+                        </div>
+
+                        <!-- ---------------------------------------------------- -->
+                        <!--                   BLOG POST MODALS                   -->
+                        <!-- ---------------------------------------------------- -->
+
+                        <!-- BLOG POST MODAL 1 -->
+                        <div class="modal fade" id="blogPost1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog mw-100 w-75" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Walk With Me</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            FIRST BLOG TO COME!!!
+                                        </p>
+                                        <p>
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum provident quisquam dolores quos, voluptatibus omnis corrupti tenetur, repudiandae aspernatur placeat maxime corporis optio, ea expedita quas doloremque perspiciatis accusantium voluptates.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa provident aliquam adipisci est? Hic, vel sunt consectetur culpa, voluptates eos quaerat tempore illo accusantium rem voluptatem incidunt, minus ipsum velit.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro harum aut quisquam? Dignissimos, animi omnis. Consectetur sit dignissimos tempora veniam voluptate dicta deserunt similique placeat tempore assumenda? Repellendus, fugiat pariatur.
+                                        </p>
+                                        <p>
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt cupiditate vitae commodi. Error, cumque aperiam? Labore minus quisquam ratione, unde tempora officia et facere magnam, dolore similique nisi a explicabo!
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam nihil doloremque, vitae aperiam, animi quisquam quidem culpa sed enim, ipsa voluptatibus nam error libero beatae deserunt consequuntur. Inventore, iusto? Libero!
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere soluta quae sed vero repellendus beatae reiciendis molestias explicabo assumenda laudantium illo, neque optio similique quibusdam velit! Blanditiis veniam nam voluptatum.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero incidunt ex molestiae animi, commodi perspiciatis ipsum iure laboriosam voluptatem necessitatibus. Aperiam corrupti ad dignissimos, et beatae a iste architecto porro?
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam iusto, qui velit quo assumenda mollitia adipisci a officiis minus inventore magni minima? Totam illo tempore temporibus dolorem odit mollitia natus.
+                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit repellat rem atque eveniet, voluptatem reiciendis nisi quas culpa commodi iusto illo et itaque reprehenderit adipisci, iure sequi, ea eos ex?
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta culpa quisquam ipsa iure commodi, dolor perferendis repudiandae illo accusantium reprehenderit, qui harum omnis dicta tempore modi deserunt? Eos, quos aliquid!
+                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat aspernatur reiciendis, necessitatibus sed eligendi optio modi perspiciatis quo quia dolor? Reprehenderit illo consequatur explicabo minus modi dicta tempora, nemo necessitatibus.
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, omnis quam? Temporibus cupiditate, nobis iste, voluptas id saepe atque corrupti enim molestiae, a nisi dignissimos quae ea quos consectetur ab.
+                                        </p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus sunt eligendi illum odit a maiores quas deleniti officiis. Tempore reprehenderit eius obcaecati dolorum. Facere hic fugiat odio, quidem delectus voluptates!
+                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus saepe laudantium, unde ex eum rem vero omnis? Alias, sunt tempore. Sit nostrum ex maiores fugiat velit earum maxime, optio unde.
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non inventore itaque iure reprehenderit sunt laborum quaerat fugiat reiciendis! Non magnam illo mollitia similique aut quia quae fugiat recusandae, harum ab.
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, nulla sed. Amet illum ipsa earum quod! Modi, officiis! Commodi id, officia autem ipsam eveniet esse voluptates totam amet blanditiis excepturi.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias fugiat voluptatibus repellendus modi! Dolores odit sunt unde tempore aliquid. Aliquid quos alias facere voluptates consequuntur voluptas laborum nesciunt id molestiae.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dignissimos corrupti odio odit corporis adipisci consequatur repellendus alias officia sint. Modi magni minus quasi provident eaque vero odio cum enim.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus commodi accusantium, ipsum deserunt modi a dolorem consectetur, hic, iure corrupti numquam possimus! Temporibus quod sed quia sunt dignissimos dolorum reiciendis.
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint in temporibus voluptas debitis quae molestias. Accusamus vel consectetur debitis velit in, delectus, necessitatibus, autem optio ipsa temporibus dolorem repellendus a?
+                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate tempora magnam, repellendus omnis optio sit perferendis fugit architecto autem labore cumque minus dolor! Natus qui, pariatur nostrum accusamus similique cumque!
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi et rem autem totam fugiat aliquid laudantium, odio vel excepturi iste, doloribus iure repudiandae ratione deserunt exercitationem quas veritatis provident repellat!
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam corporis ad, ex nobis ea nisi quisquam non necessitatibus nesciunt quibusdam maxime sit vero asperiores sunt doloribus facere, quis libero nulla.
+                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo, velit fuga provident maiores assumenda impedit! In, magni! Laborum eius ex aut sit qui explicabo voluptas similique nihil delectus dolore? Distinctio.
+                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi perferendis iusto sed nemo amet! Repudiandae et impedit ab culpa laudantium ratione itaque. Laudantium nihil recusandae soluta magnam neque at minus!
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem itaque iure iste distinctio, quae, illo dicta repudiandae debitis repellat repellendus a! Culpa, vel fuga quod alias ullam aspernatur assumenda nam!
+                                        </p>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- THEME TOGGLE -->
+                    <div class="col-3 toggle-container right">
+                        <div class="custom-control custom-switch custom-switch-adaptive">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                            <label class="custom-control-label" for="customSwitch1" id="customSwitch1Label">&rarr;</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="./js/toggle.js"></script>
+</body>
+
+</html>

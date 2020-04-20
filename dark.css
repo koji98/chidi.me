@@ -1,0 +1,74 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
+body {
+    background-color: #1F1F1F;
+}
+
+.custom-switch .custom-control-label::before {
+    background-color: #FFFFF0;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    background-color: #FFFFF0;
+}
+
+.custom-switch .custom-control-label::after {
+    background-image: url('./images/moon_dark_mode.webp');
+    background-size: cover;
+}
+
+.title {
+    color: #FFFFF0;
+}
+
+.intro {
+    color: #FFFFF0;
+}
+
+.post {
+    color: #FFFFF0;
+}
+
+.post-title {
+    color: #009A00;
+}
+
+.modal-content {
+    background-color: #1F1F1F;
+}
+
+.modal-title {
+    color: #009A00;
+}
+
+.modal-body {
+    color: #FFFFF0;
+}
+
+button.close {
+    color: #FFFFF0;
+}
+
+button.close:hover {
+    color: #FFFFF0;
+}
+
+.modal-footer button.btn {
+    color: #FFFFF0;
+}
+
+.modal-footer button.btn:hover {
+    color: #FFFFF0;
+}
+
+.custom-switch.custom-switch-adaptive .custom-control-label {
+    color: #1F1F1F;
+    border: 1px solid #FFFFF0;
+    background-color: #FFFFF0;
+}
+
+.custom-switch.custom-switch-adaptive .custom-control-input:checked ~ .custom-control-label {
+    color: #1F1F1F;
+    border: 1px solid #1F1F1F;
+    background-color: #009A00;
+}

@@ -1,0 +1,58 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
+body {
+    background-color: #FFFFF0;
+}
+
+.custom-switch .custom-control-label::before {
+    background-color: #1F1F1F;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    background-color: #1F1F1F;
+}
+
+.custom-switch .custom-control-label::after {
+    background-image: url('./images/sun_light_mode.jpg');
+    background-size: cover;
+}
+
+.title {
+    color: #1F1F1F;
+}
+
+.intro {
+    color: #1F1F1F;
+}
+
+.post {
+    color: #1F1F1F;
+}
+
+.post-title {
+    color: #008100;
+}
+
+.modal-content {
+    background-color: #FFFFF0;
+}
+
+.modal-title {
+    color: #008100;
+}
+
+.modal-body {
+    color: #1F1F1F;
+}
+
+.custom-switch.custom-switch-adaptive .custom-control-label {
+    color: #1F1F1F;
+    border: 1px solid #1F1F1F;
+    background-color: #FFFFF0;
+}
+
+.custom-switch.custom-switch-adaptive .custom-control-input:checked ~ .custom-control-label {
+    color: #1F1F1F;
+    border: 1px solid #1F1F1F;
+    background-color: #FFFFF0;
+}

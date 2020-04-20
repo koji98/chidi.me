@@ -1,0 +1,186 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
+body {
+    -webkit-transition: background-color .5s;
+    -o-transition: background-color .5s;
+    transition: background-color .5s;
+    font-family: 'B612', sans-serif;
+}
+
+.begin {
+    margin-top: 3.5%;
+}
+
+.title {
+    font-weight: 800;
+}
+
+.custom-switch .custom-control-label::before {
+    -webkit-transition: background-color .5s;
+    -o-transition: background-color .5s;
+    transition: background-color .5s;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    -webkit-transition: background-color .5s;
+    -o-transition: background-color .5s;
+    transition: background-color .5s;
+}
+
+.title {
+    -webkit-transition: color 1.5s;
+    -o-transition: color 1.5s;
+    transition: color 1.5s;
+    margin-bottom: 6.5%;
+}
+
+.center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding-left: 25%;
+}
+
+.right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+
+.intro {
+    -webkit-transition: color 1.5s;
+    -o-transition: color 1.5s;
+    transition: color 1.5s;
+    margin-bottom: 8.5%;
+    line-height: 8px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+i {
+    border-bottom: 4px solid;
+}
+
+.post {
+    -webkit-transition: color 1.5s;
+    -o-transition: color 1.5s;
+    transition: color 1.5s;
+    cursor: pointer;
+    border-bottom: 2px solid;
+    line-height: 8px;
+    margin-bottom: 5%;
+}
+
+.post-title {
+    -webkit-transition: color 1.5s;
+    -o-transition: color 1.5s;
+    transition: color 1.5s;
+    font-weight: 800;
+}
+
+.post-info {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.modal-content {
+    -webkit-transition: background-color 1.5s;
+    -o-transition: background-color 1.5s;
+    transition: background-color 1.5s;
+}
+
+.modal-title {
+    -webkit-transition: color 1.5s;
+    -o-transition: color 1.5s;
+    transition: color 1.5s;
+    font-weight: 800;
+}
+
+.modal-body {
+    -webkit-transition: color 1.5s;
+    -o-transition: color 1.5s;
+    transition: color 1.5s;
+    max-height: calc(100vh - 210px);
+    overflow-y: scroll;
+}
+
+.modal-body p {
+    line-height: 36px;
+    margin-bottom: 5%;
+    font-size: 17px;
+}
+
+@media only screen and (max-width: 768px) {
+    .center {
+        -webkit-box-align: start;
+            -ms-flex-align: start;
+                align-items: flex-start;
+        padding-left: 5%;
+    }
+
+    .right {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: end;
+            -ms-flex-align: end;
+                align-items: flex-end;
+    }
+}
+
+/* START SOURCE: https://jsfiddle.net/dfmbe60u/13/ */
+.custom-switch.custom-switch-adaptive {
+    padding-left: 0;
+}
+
+.custom-switch.custom-switch-adaptive .custom-control-label {
+    padding: 0 1.5em;
+    position: relative;
+    border-radius: 1em;
+    line-height: 1.4em;
+    -webkit-transition: background-color .5s, color .5s, border .5s;
+    -o-transition: background-color .5s, color .5s, border .5s;
+    transition: background-color .5s, color .5s, border .5s;
+}
+
+.custom-switch.custom-switch-adaptive .custom-control-label::before {
+    content: none;
+}
+
+.custom-switch.custom-switch-adaptive .custom-control-label::after {
+    position: absolute;
+    height: 1em;
+    top: 0.2em;
+    left: 0.2em;
+    width: 1em;
+    border-radius: 1em;
+    -webkit-transition: left 300ms;
+    -o-transition: left 300ms;
+    transition: left 300ms;
+}
+
+.custom-switch.custom-switch-adaptive .custom-control-input:checked ~ .custom-control-label {
+    -webkit-transition: background-color .5s, color .5s, border .5s;
+    -o-transition: background-color .5s, color .5s, border .5s;
+    transition: background-color .5s, color .5s, border .5s;
+}
+
+.custom-switch.custom-switch-adaptive .custom-control-input:checked ~ .custom-control-label::after {
+    left: calc(100% - 1.2em);
+    -ms-transform: none;
+        transform: none;
+    -webkit-transform: none;
+}
+/* END SOURCE */
