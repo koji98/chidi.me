@@ -22,12 +22,14 @@ body {
 .intro,
 .post,
 .post:hover,
-.post-content {
+.post-content,
+.blockquote p {
     color: #FFFFF0;
     opacity: .75;
 }
 
-.post-title {
+.post-title,
+.blockquote h5 {
     color: #F0C420;
     /* text-shadow: 0px 0px 1px #FFFFF0; */
 }

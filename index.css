@@ -84,6 +84,54 @@ body {
     text-indent: 40px;
     font-size: 19px;
 }
+
+/* START SOURCE: https://codepen.io/jupago/pen/dwZKbM */
+/* center the blockquote in the page */
+.blockquote-wrapper {
+    display: flex;
+    padding: 0 20px;
+    margin: 80px 0;
+ }
+ 
+ /* Blockquote main style */
+ .blockquote {
+     position: relative;
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 800;
+     padding: 30px 0;
+     width: 100%;
+     max-width: 500px;
+     z-index: 1;
+     align-self: center;
+     border-top: solid 1px;
+     border-bottom: solid 1px;
+ }
+ 
+ /* Blockquote header */
+ .blockquote p {
+     position: relative;
+     font-size: 19px;
+     font-weight: 800;
+     line-height: 1;
+     margin: 0;
+     transition: color 1s, opacity 1s;
+ }
+
+ .blockquote h5 {
+    transition: color 1s, opacity 1s;
+ }
+ 
+ /* Blockquote right double quotes */
+ .blockquote:after {
+     position: absolute;
+     content: "”";
+     font-size: 10rem;
+     line-height: 0;
+     bottom: -43px;
+     right: 30px;
+ }
+ /* END SOURCE */
+
 .post-body ol {
     list-style-position: inside;
     font-size: 19px;
