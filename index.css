@@ -130,3 +130,11 @@ a:hover {
 #toggle {
     cursor: pointer;
 }
+
+.list-item-header {
+    font-weight: bold;
+}
+
+ol li {
+    margin-bottom: 15px;
+}
