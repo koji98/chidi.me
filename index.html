@@ -1,96 +1,106 @@
-<!DOCTYPE html>
 <html>
 
 <head>
+    <script>
+        (function() {
+            let currentTheme;
+
+            function changeTheme(inputTheme, themeConfig) {
+                if (inputTheme === "darkmode") {
+                    const theme = themeConfig.darkmode;
+                    for (let key in theme) {
+                        setCSSVar(key, theme[key]);
+                    }
+                    localStorage.setItem("theme", inputTheme);
+                } else {
+                    const theme = themeConfig.lightmode;
+                    for (let key in theme) {
+                        setCSSVar(key, theme[key]);
+                    }
+                    localStorage.setItem("theme", inputTheme);
+                }
+            }
+
+            function setCSSVar(property, color) {
+                document.documentElement.style.setProperty(property, color);
+            }
+
+            try {
+                currentTheme = localStorage.getItem("theme") || "darkmode";
+
+                var themeConfig = {
+                    darkmode: {
+                        "--color-bg": "#1F1F1F",
+                        "--color": "#BDBDBD",
+                        "--opacity": ".75",
+                        "--color-pop": "#F0C420"
+                    },
+
+                    lightmode: {
+                        "--color-bg": "#FFFFED",
+                        "--color": "#1F1F1F",
+                        "--opacity": "1",
+                        "--color-pop": "#DD571C"
+                    }
+                };
+
+                changeTheme(currentTheme, themeConfig);
+            } catch (err) {
+                console.log(new Error("accessing theme has been denied"));
+            }
+        })();
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=B612&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="./icons8-astronaut-48.png" />
     <link rel="stylesheet" href="./index.css">
-    <link rel="stylesheet" id="cssTheme" href="./light.css">
-
     <title>Endeavor by Chidi Udeze</title>
 </head>
 
 <body>
-
-    <div class="container">
-        <div class="row begin">
-            <div class="col-12">
-
-                <div class="row justify-content-center">
-                    <!-- BLOG CONTENT -->
-                    <div class="col-9 center">
-                        <div class="intro">
-                            <div class="intro-opener">
-                                <a class="title" href="./index">Endeavor</a>
-                                <p>An Attempt To Achieve A Goal</p>
-                            </div>
-                            <p>Personal Blog by Chidi Udeze</p>
-                        </div>
-
-                        <!-- ---------------------------------------------------- -->
-                        <!--                      BLOG POSTS                      -->
-                        <!-- ---------------------------------------------------- -->
-
-                        <!-- BLOG POST 1 -->
-                        <a class="post" href="./blog_posts/writing_my_first_software_requirements_document">
-                            <h3 class="post-title">Writing My First Software Requirements Document</h3>
+    <div class="col-sm-12 single-col">
+        <div class="container">
+            <div class="row justify-content-end">
+                <span id="toggle">
+                    ⬤
+                </span>
+            </div>
+            <div class="row blog-header">
+                <div class="col-12">
+                    <div>
+                        <a href='./index.html' id="blog-name">Endeavor</a>
+                        <p>An Attempt To Achieve A Goal</p>
+                    </div>
+                    <p>Personal Blog by Chidi Udeze</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="post">
+                        <a class="post-link" href="./blog_posts/writing_my_first_software_requirements_document.html">
+                            <h3 class="post-title highlight">Writing My First Software Requirements Document</h3>
                             <p class="post-info">April 25, 2020</p>
                             <p>The Beginning Of Everything</p>
                         </a>
-
-                        <!-- BLOG POST 1 -->
-                        <a class="post" href="./blog_posts/endeavor">
-                            <h3 class="post-title">Endeavor</h3>
+                    </div>
+                    <div class="post">
+                        <a class="post-link" href="./blog_posts/endeavor.html">
+                            <h3 class="post-title highlight">Endeavor</h3>
                             <p class="post-info">April 20, 2020</p>
                             <p>The Reason Why I Blog</p>
                         </a>
-
-                        <!-- ---------------------------------------------------- -->
-                        <!--                        FOOTER                        -->
-                        <!-- ---------------------------------------------------- -->
-
-                        <!-- <footer class="fixed-bottom">
-                            <div class="col-12 email-footer">
-                                yoooo
-                            </div>
-                        </footer> -->
-
                     </div>
-
-                    <!-- THEME TOGGLE -->
-                    <div class="col-3 right">
-                        <div class="custom-control custom-switch custom-switch-adaptive">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                            <label class="custom-control-label" for="customSwitch1"
-                                id="customSwitch1Label">&rarr;</label>
-                        </div>
-                    </div>
-
                 </div>
-
             </div>
         </div>
-
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="./js/toggle.js"></script>
-
-    <script>
-
-    </script>
 </body>
 
 </html>
