@@ -1,0 +1,133 @@
+<html>
+
+<head>
+    <script>
+        (function() {
+            let currentTheme;
+
+            function changeTheme(inputTheme, themeConfig) {
+                if (inputTheme === "darkmode") {
+                    const theme = themeConfig.darkmode;
+                    for (let key in theme) {
+                        setCSSVar(key, theme[key]);
+                    }
+                    localStorage.setItem("theme", inputTheme);
+                } else {
+                    const theme = themeConfig.lightmode;
+                    for (let key in theme) {
+                        setCSSVar(key, theme[key]);
+                    }
+                    localStorage.setItem("theme", inputTheme);
+                }
+            }
+
+            function setCSSVar(property, color) {
+                document.documentElement.style.setProperty(property, color);
+            }
+
+            try {
+                currentTheme = localStorage.getItem("theme") || "darkmode";
+
+                var themeConfig = {
+                    darkmode: {
+                        "--color-bg": "#1F1F1F",
+                        "--color": "#BDBDBD",
+                        "--opacity": ".75",
+                        "--color-pop": "#F0C420"
+                    },
+
+                    lightmode: {
+                        "--color-bg": "#FFFFED",
+                        "--color": "#1F1F1F",
+                        "--opacity": "1",
+                        "--color-pop": "#DD571C"
+                    }
+                };
+
+                changeTheme(currentTheme, themeConfig);
+            } catch (err) {
+                console.log(new Error("accessing theme has been denied"));
+            }
+        })();
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=B612&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="../icons8-astronaut-48.png" />
+    <link rel="stylesheet" href="../index.css">
+    <title>Back To Blogging</title>
+</head>
+
+<body>
+    <div class="col-sm-12 single-col">
+        <div class="container">
+            <div class="row justify-content-end">
+                <span id="toggle">
+                    ⬤
+                </span>
+            </div>
+            <div class="row blog-header">
+                <div class="col-12">
+                    <div>
+                        <a href='../' id="blog-name">Endeavor</a>
+                        <p>An Attempt To Achieve A Goal</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="post-content">
+                        <div class="post-header">
+                            <h3 class="post-title">Back To Blogging</h3>
+                            <p class="post-info">April 30, 2021</p>
+                            <p class="post-basis">Winter Is Over</p>
+                        </div>
+
+                        <div class="post-body">
+                            <p>
+                                Well, its been a little over a year since my last post. It's embarrassing to see I only wrote two posts before my hiatus. Honestly, it wasn't that I didn't have much to write about, but rather didn't have the energy to do so. A lot has happened in the
+                                last year for me. Here goes a quick recap:
+                                <ol>
+                                    <li>
+                                        <span class="list-item-header">Finished My CACI Internship.</span>
+                                        <br> If you read (and can remember, since its been so long) the last post, I was in the middle of an internship with CACI. I had just completed writing a software requirements document for migrating a legacy application
+                                        to the cloud. I did successfully create the application, but my internship ended before I could see it deployed &#9785; I learned a lot during my time at CACI, from how government contracting worked to development
+                                        with ASP.NET and C#. Development in C#/ASP.NET was a lot different from my experience with Node.js/Express or Python/Flask. I realized I'm not a big fan of opinionated frameworks. I think development did go faster
+                                        when I got used to, but still disliked that a lot of the decisions weren't made by me.
+                                    </li>
+                                    <li>
+                                        <span class="list-item-header">Started At Fulltime Job.</span>
+                                        <br> I started my fulltime job as a Data Intelligence Engineer at Microsoft. The beginning was rough, but amazing. There was <b>a lot</b> to ramp-up on, but I learned so much in the process. Since then I've moved
+                                        into a Data & Applied Scientist role. Data science has become a new passion of mine and I'm grateful to grow in the field at Microsoft. I can honestly say that everyday I learn something new.
+                                    </li>
+                                    <li>
+                                        <span class="list-item-header">Began An Anime Project.</span>
+                                        <br> I started a new passion project, <a href="https://anibrain.ai" target="_blank" class="highlight">AniBrain</a>! I have watched anime since I was a kid, starting off with classics like Dragon Ball Z, Naruto,
+                                        and Bleach on Toonami. In searching for a new personal project to get more realistic data science/machine learning experience, I realized that the anime domain doesn't have a lot of widespread artificial intelligence
+                                        usage (that I know of). I want to bring more artificial intelligence powered tools to the anime domain. This starts with a recommender system (which I've seen is <b>very</b> common to make with anime data, but I'd
+                                        like to think I can make it "better"). I have a lot of other ideas and will be building them out one-by-one.
+                                    </li>
+                                </ol>
+                            </p>
+                            <p>
+                                For the foreseeable future, my posts will consist of work, learnings, and challenges I've met while building <a href="https://anibrain.ai" target="_blank" class="highlight">AniBrain</a>. I may occasionally write about my
+                                job experiences as well. At this point you're probably wondering, <i>"Will you actually post again any time soon?"</i> <b>Yes,</b> I do plan on posting more consistently this time around. I thought about blogging multiple
+                                times during my time at Microsoft and building <a href="https://anibrain.ai" target="_blank" class="highlight">AniBrain</a>, yet I never acted on it. It's a big regret of mine and I'll keep on regretting it as long as I
+                                don't, so here goes my second attempt!
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="../js/toggle.js"></script>
+</body>
+
+</html>
