@@ -47,10 +47,13 @@ a:hover {
     text-decoration: none;
 }
 
-.post:not(:last-of-type) {
-    border-bottom: 2px solid var(--color);
+.post {
     padding-bottom: 25px;
     margin-bottom: 25px;
+}
+
+.post:not(:last-of-type) {
+    border-bottom: 2px solid var(--color);
 }
 
 .post-header {
