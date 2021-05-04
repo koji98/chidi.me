@@ -1,0 +1,350 @@
+<html>
+
+<head>
+    <script>
+        (function() {
+            let currentTheme;
+
+            function changeTheme(inputTheme, themeConfig) {
+                if (inputTheme === "darkmode") {
+                    const theme = themeConfig.darkmode;
+                    for (let key in theme) {
+                        setCSSVar(key, theme[key]);
+                    }
+                    localStorage.setItem("theme", inputTheme);
+                } else {
+                    const theme = themeConfig.lightmode;
+                    for (let key in theme) {
+                        setCSSVar(key, theme[key]);
+                    }
+                    localStorage.setItem("theme", inputTheme);
+                }
+            }
+
+            function setCSSVar(property, color) {
+                document.documentElement.style.setProperty(property, color);
+            }
+
+            try {
+                currentTheme = localStorage.getItem("theme") || "darkmode";
+
+                var themeConfig = {
+                    darkmode: {
+                        "--color-bg": "#1F1F1F",
+                        "--color": "#BDBDBD",
+                        "--opacity": ".75",
+                        "--color-pop": "#F0C420"
+                    },
+
+                    lightmode: {
+                        "--color-bg": "#FFFFED",
+                        "--color": "#1F1F1F",
+                        "--opacity": "1",
+                        "--color-pop": "#DD571C"
+                    }
+                };
+
+                changeTheme(currentTheme, themeConfig);
+            } catch (err) {
+                console.log(new Error("accessing theme has been denied"));
+            }
+        })();
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=B612&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="../icons8-astronaut-48.png" />
+    <link rel="stylesheet" href="../index.css">
+    <title>Anime Recommender System Using Topic Distribution Similarity</title>
+</head>
+
+<body>
+    <div class="col-sm-12 single-col">
+        <div class="container">
+            <div class="row justify-content-end">
+                <span id="toggle">
+                    ⬤
+                </span>
+            </div>
+            <div class="row blog-header">
+                <div class="col-12">
+                    <div>
+                        <a href='../' id="blog-name">Endeavor</a>
+                        <p>An Attempt To Achieve A Goal</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="post-content">
+                        <div class="post-header">
+                            <h3 class="post-title">Anime Recommender System Using Topic Distribution Similarity</h3>
+                            <p class="post-info">May 04, 2021</p>
+                            <p class="post-basis">My First Experience w/ LDA & Jensen-Shannon Divergence</p>
+                        </div>
+
+                        <div class="post-body">
+                            <p>
+                                Before I get into the core of the blog post, I want to talk about content vs. collaborative filtering for recommender systems. <b>Content based filtering</b> makes recommendations using attributes assigned to an object,
+                                where <b>collaborative based filtering</b> makes recommendations by using "user behavior". Netflix uses collaborative based filtering to make show/movie recommendations to users based on what other users who are like them
+                                have watched. Most anime recommender system examples (that I have seen) use a collaborative filtering approach, but I fear that using this filtering approach could miss some hidden gems. There are <b>a lot</b> of anime
+                                out there, and no one has seen everything. It's entirely possible that, for example, there are animes out there more similar to Naruto (in theme) than Black Clover or One Piece or Bleach or My Hero Academia, but aren't
+                                popular enough to see the light of the day. I decided to go with a content based filtering approach for AniBrain's anime recommender system to help users find anime that sound most similar to other anime. This is my first
+                                attempt: topic distribution similarity using <b>Latent Dirichlet Allocation</b> (LDA) and <b>Jensen-Shannon divergence</b>.
+                            </p>
+
+                            <h4 class="post-section">LDA & Jensen-Shannon</h4>
+
+                            <p>
+                                Topic modelling is a type of statistical model for discovering the abstract "topics" that occur in a collection of documents, even when we don't know what we're looking for. It is an unsupervised classification approach, meaning we don't need any labelled
+                                data, just a collection of documents. LDA is one of the most popular topic modelling techniques. LDA makes a few assumptions:
+                                <ol>
+                                    <li>Each document is a mix of topics and each topic is a mix of words.</li>
+                                    <li>Each document is just a bag of words, so word ordering and grammatical role do not matter.</li>
+                                    <li>You know beforehand the number of topics that are in your corpus.</li>
+                                </ol>
+                                So at the end of running LDA on your corpus, you would have list of topics, and each document would have a topic distribution. For more information on LDA, I highly recommend you watch <a href="https://www.youtube.com/watch?v=NYkbqzTlW3w"
+                                    target="_blank">this</a>.
+                            </p>
+
+                            <blockquote class="post-blockquote">
+                                <p class="post-blockquote-text">What am I using LDA on?
+                                    <br>
+                                    <span class="highlight"><b>Anime Synopses, Genres, & Age Ratings</b></span>
+                                </p>
+                            </blockquote>
+                            <p>
+                                A synopsis is an outline giving a general view of a subject, in our case, an anime. I wanted to get anime topic distributions based on their synopsis, and use that to find similar animes. Basically, animes which have a more similar topic probability distribution
+                                would be more similar. This is where Jensen-Shannon divergence comes into play. The Jensen–Shannon divergence is a method of measuring the similarity between two probability distributions. Now, let's get into the core of
+                                the blog post, the modelling.
+                            </p>
+
+                            <h4 class="post-section">Implementation: Data Cleaning</h4>
+
+                            <p>
+                                I collected anime synopses from MyAnimeList to do this modelling. The beginning consisted of <b>a lot</b> of data cleaning/dropping. I filtered out words/sentences in the synopses that weren't actually a part of the synopsis,
+                                like the source of the text and notes about the anime. I also filtered out japanese characters from all synopsis since it would make my results less interpretable (I sadly don't know japanese). After that, I dropped synopses
+                                from the corpus which weren't useful. There were no null values in the dataset, but I did find that synopses like "No synopsis has been added for this series yet. Click here to update this information." and "No synopsis
+                                information has been added to this title. Help improve our database by adding a synopsis here." existed, which were basically null values for this case.
+                            </p>
+                            <p>
+                                Now I turned to spaCy (my favorite NLP package) to process each synopsis for further cleaning. For anyone who isn't familiar, <a href="https://spacy.io/" target="_blank">spaCy</a> is a free, open-source library for NLP
+                                in Python. It's designed to build information extraction or natural language understanding systems. I used spaCy to:
+                                <ol>
+                                    <li><span class="list-item-header">Remove people (using named entity recognition) from the synopsis.</span>
+                                        <br> This was added to improve the model after looking at results of some recommendations. It's important to remember LDA simply uses a bag of word model, so the name Ichigo is treated the same, whether it is in
+                                        the Ichigo from Bleach or DARLING in the FRANXX (never seen this one) or Ichigo Mashimaro (haven't seen this either). Removing names helped me reduce noise from similarly named characters and focus more on the content
+                                        surrounding the characters.
+                                    </li>
+                                    <li><span class="list-item-header">Remove words that are not nouns, adjectives, verbs, or adverbs from the synopsis.</span>
+                                        <br> This came from a lot of playing around. I did this to improve the topics found through LDA. I noticed that using all words would create topics with highly weighted words that weren't relevant. I found that
+                                        just the nouns, adjectives, verbs, and adverbs of a synopsis were enough to accurately convey the authors intent without dulling the picture they painted.
+                                    </li>
+                                    <li><span class="list-item-header">Remove stopwords.</span>
+                                        <br> I added in custom stop words for this domain.
+                                    </li>
+                                    <li><span class="list-item-header">Lemmatization.</span></li>
+                                </ol>
+                            </p>
+                            <p>
+                                After doing the processing with spaCy, I also removed extremely short words (words with two characters or less) because I found they conveyed no additional meaning for the most part. This left me with a lot of empty synopsis. So I dropped all synopsis
+                                without a single remaining word.
+                            </p>
+
+                            <h4 class="post-section">Implementation: Bag of Words Creation</h4>
+
+                            <p>
+                                I then made each anime's bag-of-word representation. For each anime row, I did the following steps to create its bag-of-words:
+                                <ol>
+                                    <li>
+                                        <span class="list-item-header">Create n-grams.</span>
+                                        <br> I used Gensim's Phrases model to create n-grams for each synopsis. A n-gram is simply a sequence of <b><i>n</i></b> words. The Phrases model does the heavy lifting of calculating a threshold to decide when
+                                        a n-gram would be stored. The idea is that if <b><i>n</i></b> words co-occur enough, they can be treated as a phrase and not individual words. For example, if "world" and "war" co-occur a lot in your corpus, you
+                                        can treat is as one word, "world_war" instead of two separate ones. This helps our bag-of-words representation capture more context.
+                                    </li>
+                                    <li>
+                                        <span class="list-item-header">Add genres and rating to the bag-of-words.</span>
+                                        <br> I added the anime's genres and age rating to the bag of words (replacing spaces and dashes with underscores). I did this because just the words of a synopsis were not enough to make strong topics and recommendations.
+                                        Synopses may contain an outline of the plot, but it doesn't tell you how the show is portrayed. For example, there could be a synopsis about a group of ninjas saving the world, but that show could be a comedy, not
+                                        action/adventure. Added in genres and age rating helped refine the topics found.
+                                    </li>
+                                </ol>
+
+                                After creating a bag-of-words for each anime, I wanted to remove animes with a small bag-of-words since LDA performs better on longer text. This was extremely hard. By removing anime without at least 20 words in their bag-of-words, I cut down my corpus
+                                from 10989 documents to 7302. I lost 33% of data I was working with! I had to compromise between data loss and LDA performance. Ideally, I wanted to remove anime with less than 40 words, but the data loss was too much,
+                                so I played around with the word_count, topics found, and recommendations until I decided on a 20 word limit. <a href="https://stackoverflow.com/questions/29786985/whats-the-disadvantage-of-lda-for-short-texts"
+                                    target="_blank">Here</a> is a response that best explains why LDA does not perform well on short text. I considered using a different <a href="https://towardsdatascience.com/short-text-topic-modeling-70e50a57c883" target="_blank">topic modelling approach for short text</a>,
+                                but then I would need to filter out anime with longer synopsis, and those are the popular ones that I definitely wanted to include in the recommender system.
+                            </p>
+
+                            <h4 class="post-section">Implementation: Topic Modelling</h4>
+                            <p>
+                                I decided to use Gensim's LDA mallet model wrapper instead of their default LDA Model. There are two LDA algorithms. The Variational Bayes is used by Gensim’s LDA Model, while Gibb’s Sampling is used in a LDA mallet model. Here is a quick overview of
+                                the difference between the two:
+                                <ol>
+                                    <li>
+                                        <span class="list-item-header">Variational Bayes</span>
+                                        <br>
+                                        <ul>
+                                            <li>Sampling the variations between, and within each word (part or variable) to decide which topic it belongs to (but some variations cannot be explained).</li>
+                                            <li>Fast but less accurate</li>
+                                        </ul>
+                                        <span class="list-item-header">Gibb’s Sampling</span>
+                                        <br>
+                                        <ul>
+                                            <li>Sampling one variable at a time, conditional upon all other variables</li>
+                                            <li>Slow but more accurate</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                I decided to filter out tokens that appeared less than 30 times or appeared in over 50% of the documents. This was to make the words in each bag-of-words more relvant. Words that rarely appeared in other documents wouldn't work well in a model that uses
+                                word distributions and words that appear too much wouldn't convey any insightful additional meaning.
+                            </p>
+                            <p>
+                                I didn't know beforehand what the optimal number of topics would be so I decided to create multiple models with a differing number of topics hyperparameters and compare their coherence score to determine the optimal one. <b>Coherence</b>                                measures the relative distance between words within a topic. I based on my coherence evaluation on a <a href="https://stackoverflow.com/questions/54762690/what-is-the-meaning-of-coherence-score-0-4-is-it-good-or-bad#:~:text=Coherence%20measures%20the%20relative%20distance%20between%20words%20within,being%20measured%20are%20either%20identical%20words%20or%20bigrams.">StackOverflow post</a>                                and <a href="https://datascienceplus.com/evaluation-of-topic-modeling-topic-coherence/">datascience+ article</a>. I was never able to create a model with a coherence score in the range of what I wanted (.55-.7 using c_v),
+                                I landed on a model with .4846 coherence amongst topics. What's interesting is that in a few of my attempts, I did see coherence scores of .75/.8 when playing around with Gensim's LDA model, but I was never able to use
+                                them for recommendations. I never was able to make sense of this. The optimal model used 18 topics, here they are:
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Topic Number</th>
+                                            <th>Top 10 Word Probability Distribution</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>0</th>
+                                            <th>0.034*"mystery" + 0.024*"r___violence__profanity" + 0.020*"supernatural" + ' '0.017*"horror" + 0.015*"psychological" + 0.015*"find" + 0.013*"death" + 0.012*"mysterious" + 0.012*"drama" + 0.012*"action"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>1</th>
+                                            <th>0.030*"war" + 0.027*"military" + 0.025*"action" + 0.014*"r___violence__profanity" + 0.012*"force" + 0.012*"drama" + 0.011*"empire" + 0.011*"battle" + 0.011*"nation" + 0.010*"country"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>2</th>
+                                            <th>0.058*"magic" + 0.030*"world" + 0.030*"fantasy" + 0.023*"princess" + 0.017*"girl" + 0.017*"comedy" + 0.017*"magical" + 0.016*"witch" + 0.016*"shoujo" + 0.015*"kingdom"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>3</th>
+                                            <th>0.049*"game" + 0.031*"team" + 0.027*"sports" + 0.021*"shounen" + 0.020*"pg__teens__or_older" + 0.017*"player" + 0.015*"play" + 0.013*"win" + 0.012*"action" + 0.012*"world"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>4</th>
+                                            <th>0.028*"action" + 0.021*"scifi" + 0.020*"police" + 0.015*"city" + 0.015*"world" + 0.014*"comedy" + 0.012*"pg__teens__or_older" + 0.011*"group" + 0.010*"adventure" + 0.010*"work"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>5</th>
+                                            <th>0.051*"comedy" + 0.039*"girl" + 0.032*"school" + 0.027*"romance" + 0.025*"ecchi" + 0.023*"r__mild_nudity" + 0.014*"harem" + 0.014*"pg__teens__or_older" + 0.013*"day" + 0.012*"life"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>6</th>
+                                            <th>0.017*"pg__teens__or_older" + 0.016*"day" + 0.016*"girl" + 0.016*"begin" + 0.015*"find" + 0.014*"life" + 0.014*"drama" + 0.014*"time" + 0.012*"friend" + 0.011*"live"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>7</th>
+                                            <th>0.027*"pg__teens__or_older" + 0.022*"romance" + 0.021*"life" + 0.020*"love" + 0.018*"drama" + 0.017*"slice_of_life" + 0.017*"comedy" + 0.017*"friend" + 0.015*"girl" + 0.014*"school"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>8</th>
+                                            <th>0.045*"adventure" + 0.030*"island" + 0.023*"find" + 0.022*"comedy" + 0.020*"fantasy" + 0.017*"friend" + 0.017*"pg__children" + 0.013*"shounen" + 0.012*"kids" + 0.012*"dragon"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>9</th>
+                                            <th>0.039*"g__all_ages" + 0.032*"kids" + 0.027*"adventure" + 0.019*"friend" + 0.019*"child" + 0.017*"comedy" + 0.017*"fantasy" + 0.015*"pg__children" + 0.014*"live" + 0.013*"world"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>10</th>
+                                            <th>0.026*"action" + 0.023*"historical" + 0.020*"samurai" + 0.020*"adventure" + 0.018*"man" + 0.016*"martial_arts" + 0.015*"clan" + 0.015*"ninja" + 0.014*"kill" + 0.012*"shounen"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>11</th>
+                                            <th>0.045*"human" + 0.033*"supernatural" + 0.025*"vampire" + 0.021*"monster" + 0.020*"demon" + 0.016*"world" + 0.014*"horror" + 0.014*"action" + 0.014*"r___violence__profanity" + 0.014*"demons"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>12</th>
+                                            <th>0.042*"music" + 0.020*"comedy" + 0.017*"g__all_ages" + 0.015*"idol" + 0.014*"pg__teens__or_older" + 0.012*"japanese" + 0.010*"band" + 0.010*"work" + 0.009*"girl" + 0.009*"include"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>13</th>
+                                            <th>0.046*"scifi" + 0.033*"earth" + 0.029*"mecha" + 0.027*"space" + 0.024*"action" + 0.022*"planet" + 0.020*"pg__teens__or_older" + 0.017*"adventure" + 0.017*"robot" + 0.015*"alien"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>14</th>
+                                            <th>0.032*"world" + 0.030*"fantasy" + 0.024*"adventure" + 0.023*"action" + 0.022*"power" + 0.017*"magic" + 0.016*"pg__teens__or_older" + 0.014*"demon" + 0.013*"battle" + 0.012*"hero"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>15</th>
+                                            <th>0.098*"school" + 0.043*"student" + 0.032*"club" + 0.023*"girl" + 0.022*"pg__teens__or_older" + 0.019*"class" + 0.018*"high_school" + 0.018*"comedy" + 0.016*"member" + 0.012*"teacher"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>16</th>
+                                            <th>0.066*"hentai" + 0.064*"rx__hentai" + 0.021*"woman" + 0.020*"girl" + 0.019*"man" + 0.017*"day" + 0.015*"sex" + 0.013*"sexual" + 0.012*"love" + 0.012*"work"</th>
+                                        </tr>
+                                        <tr>
+                                            <th>17</th>
+                                            <th>0.048*"father" + 0.044*"family" + 0.033*"mother" + 0.024*"live" + 0.021*"drama" + 0.020*"life" + 0.014*"daughter" + 0.014*"day" + 0.013*"g__all_ages" + 0.012*"son"</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </p>
+                            <p>
+                                I played around with LDAVis and created some charts to better understand/explore my topics after the modelling.
+                            </p>
+
+                            <h4 class="post-section">Implementation: Creating Recommendations</h4>
+                            <p>
+                                To create recommendations I did the following:
+                                <ol>
+                                    <li>Found each anime's topic distribution using the LDAMallet model</li>
+                                    <li>Created a function to get the Jensen-Shannon distance between a single anime's topic distribution and all other animes in the corpus</li>
+                                    <li>Return the animes with the highest scores</li>
+                                </ol>
+                            </p>
+                            <p>For "Shingeki no Kyojin" (Attack on Titan), the anime recommended were:
+                                <ol>
+                                    <li>Dog Soldier</li>
+                                    <li>Trinity Blood</li>
+                                    <li>Vampire Hunter D</li>
+                                    <li>Monster Musume no Oishasan</li>
+                                    <li>Fullmetal Alchemist: Brotherhood</li>
+                                    <li>Fullmetal Alchemist: The Conqueror of Shamballa</li>
+                                    <li>Owari no Seraph: Nagoya Kessen-hen</li>
+                                    <li>Shingeki no Kyojin Season 3</li>
+                                    <li>Hellsing Ultimate</li>
+                                    <li>Gunslinger Stratos The Animation</li>
+                                </ol>
+                            </p>
+
+                            <h4 class="post-section">Takeaways</h4>
+                            <p>I was pleased with the results of the model. I was able to find out about a lot of anime that never were recommended to me before. However, the model's performance is not something I would want to use in production. Some of
+                                the glaring problems that stand out to me are:
+                                <ol>
+                                    <li><span class="list-item-header">Synopsis Completeness</span>
+                                        <br>Synopses are written by people and people can summarize/outline differently, so depending on where the synopsis is retrieved from, the anime can sound "different". I realized this with Naruto when comparing
+                                        synopses written about it from multiple sources and saw they were all different. Each made Naruto sound different as well. Right now, my current model only captures a single synopsis so is bias towards that writer's
+                                        point of view. I don't believe it gives a holistic point of view, making the recommendations biased.
+                                    </li>
+                                    <li><span class="list-item-header">Synopsis Length</span>
+                                        <br>I dropped a lot of anime due to either missing synopses or synopses that were too short. I need to get more data.
+                                    </li>
+                                    <li><span class="list-item-header">Bag-of-Word Representation</span>
+                                        <br>LDA uses a bag-of-words representation to create topic probability distributions. I read once that a better text representation is worth a lot more than a stronger model/algorithm.
+                                    </li>
+                                </ol>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="../js/toggle.js"></script>
+</body>
+
+</html>

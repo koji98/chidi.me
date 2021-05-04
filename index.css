@@ -52,8 +52,12 @@ a:hover {
     margin-bottom: 25px;
 }
 
+.post-link:hover .post-title {
+    color: var(--color-pop);
+}
+
 .post:not(:last-of-type) {
-    border-bottom: 2px solid var(--color);
+    border-bottom: 1px dotted var(--color);
 }
 
 .post-header {
@@ -81,6 +85,8 @@ a:hover {
 .post-title {
     font-weight: 800;
     margin: 0;
+    color: var(--color);
+    transition: color .25s;
 }
 
 .post-info {
@@ -91,7 +97,6 @@ a:hover {
 .post-basis {
     font-style: italic;
     margin: 0;
-    /* border-bottom: 2px solid var(--color); */
 }
 
 .post-blockquote {
@@ -105,6 +110,11 @@ a:hover {
     margin: 0 auto;
     width: 80%;
     font-style: italic;
+}
+
+.post-section {
+    margin-top: 50px;
+    border-bottom: 1px solid var(--color-pop);
 }
 
 #blog-name {
@@ -140,4 +150,21 @@ a:hover {
 
 ol li {
     margin-bottom: 15px;
+}
+
+table,
+th,
+td,
+thead,
+tbody {
+    border: 1px solid var(--color);
+    border-collapse: collapse;
+    margin-top: 15px;
+    padding: 10px;
+    font-weight: 500;
+}
+
+table thead tr th {
+    font-weight: bold;
+    color: var(--color-pop);
 }
